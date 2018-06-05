@@ -5,6 +5,7 @@ import { Headers, RequestOptions } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
+import { MethodResult } from '../models/methodResult.model';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
@@ -20,34 +21,19 @@ export class DemoService {
   }
 
   private handleError(error: Response | any) {
-    console.log(error.toString())
     let errorMessage: string;
     errorMessage = error.message ? error.message : error.toString();
     return Observable.throw(errorMessage);
   }
 
-   getMethodDemo(): Observable<Object> {
-     console.log("a");
+   getMethodDemo(): Observable<MethodResult> {
     return this.http.get('https://jsonplaceholder.typicode.com/posts/1')
       .map(this.parseData)
       .catch(this.handleError);
   }
 
-  postMethodDemo(): Observable<Object> {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-
-    let url = "https://jsonplaceholder.typicode.com/posts";
-
-    let newMember={
-      title: 'foo',
-      body: 'bar',
-      userId: 1
-    };
-
-    return this.http.post(url, newMember, options)
-      .map(this.parseData)
-      .catch(this.handleError);
+  postMethodDemo(newMember): Observable<any> {
+    return this.httpClient.post("https://jsonplaceholder.typicode.com/posts", newMember)
   }
 
 }

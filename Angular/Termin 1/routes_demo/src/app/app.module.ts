@@ -12,17 +12,36 @@ import { Child2Component } from './child2/child2.component';
 import { AboutComponent } from './about/about.component';
 import { BackendCommunicationComponent } from './backend-communication/backend-communication.component';
 
-const ChildRoutes = [
-   {path: "child1", component: Child1Component},
-   {path: "child2", component: Child2Component}
+const ChildRoutes =
+  [
+    {
+      path: "child1",
+      component: Child1Component
+    },
+    {
+      path: "child2",
+      component: Child2Component
+    }
   ]
 
 const Routes = [
-  {path: "home", component: HomeComponent, children: ChildRoutes},
-  {path: "about/:Id", component: AboutComponent},
-  {path: "communication", component: BackendCommunicationComponent},
-  {path: "other", redirectTo:"home"}
-
+  {
+    path: "home",
+    component: HomeComponent,
+    children: ChildRoutes
+  },
+  {
+    path: "about/:Id",
+    component: AboutComponent
+  },
+  {
+    path: "communication",
+    component: BackendCommunicationComponent
+  },
+  {
+    path: "other",
+    redirectTo: "home"
+  }
 ]
 
 @NgModule({
@@ -38,8 +57,8 @@ const Routes = [
     BrowserModule,
     RouterModule.forRoot(Routes),
     HttpModule,
-   HttpClientModule,
-   HttpClientXsrfModule
+    HttpClientModule,
+    HttpClientXsrfModule
   ],
   providers: [],
   bootstrap: [AppComponent]
