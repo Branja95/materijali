@@ -9,12 +9,4 @@ import {MapInfo} from "./map/map-info.model"
 })
 export class AppComponent {
   title = 'Google maps simple example';
-  mapInfo: MapInfo
-
-  constructor(){
-  
-    this.mapInfo = new MapInfo(45.242268, 19.842954, 
-    "assets/ftn.png",
-    "Jugodrvo" , "" , "http://ftn.uns.ac.rs/691618389/fakultet-tehnickih-nauka");
-  }
 }
